@@ -1,0 +1,308 @@
+:root {
+  
+   --white: #ffffff;
+   --gray-25: #fafafa;
+   --gray-50: #f9fafb;
+   --gray-100: #f3f4f6;
+   --gray-200: #e5e7eb;
+   --gray-300: #d4d4d4;
+   --gray-400: #9ca3af;
+   --gray-500: #6b7280;
+   --gray-600: #4b5563;
+   --gray-700: #374151;
+   --gray-800: #1f2937;
+   --gray-900: #111827;
+
+   --header-height: 80px;
+   --footer-height: 80px;
+
+   --container-padding-x: 2rem;
+
+   --btn-border-radius: 6px;
+   --btn-width: 7rem;
+   --btn-height: 2.25rem;
+}
+
+
+/***************************************************************************/
+/***********             CUSTOM CLASSES                 ********************/
+/***************************************************************************/
+
+/*********     NORMALIZE    **************/
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+
+h1, h2, h3, h4, h5, h6, p {
+   color: var(--gray-700);
+}
+
+/******************************   HTML, BODY & WRAPPER    **********************************/
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden; /* stop outer scrolling */
+  background-color: #fefefe;
+}
+
+body {
+   height: 100dvh;
+   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   color: var(--gray-800);
+   font-size: 0.8rem;
+   font-weight: 700;
+}
+
+.wrapper {
+   position: relative;
+   width: 100%;
+   height: 100%;
+   display: grid;
+   grid-template-rows: var(--header-height) 1fr var(--footer-height);
+}
+
+header, footer {
+  background: var(--gray-100);
+  width: 100%;
+}
+
+
+
+/* Inner content limiter */
+.container {
+  max-width: 1600px;             /* constrain content */
+  margin: 0 auto;                /* center horizontally */
+  width: 100%;                   /* take full width up to 1600px */
+  height: 100%;
+  padding: 0 2rem;               /* add breathing room on small screens */
+}
+
+/********************************   HEADER    **********************************/
+
+header > .container {
+   display: grid;
+   grid-template-columns: auto 1fr auto;
+   grid-template-rows: 1fr;
+   background-color: var(--gray-100);
+}
+
+.container-back-to-lesson,
+.container-title,
+.container-user {
+   display: flex;
+}
+
+.container-back-to-lesson,
+.container-user {
+   align-items: center;
+}
+
+.back-to-lesson {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 6px 8px;
+   background-color: var(--gray-300);
+   border-radius: var(--btn-border-radius);   
+   min-width: var(--btn-width);
+   min-height: var(--btn-height);
+}
+
+.container-title {
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 10px;
+}
+
+.container-progress-bar {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+}
+.progress-bar {
+   background-color: rgb(64, 172, 64);
+   height: 12px;
+   max-width: 1000px;
+   width: 80%;
+   border-radius: 7px;
+}
+
+
+.avatar {
+   width: 60px;
+   height: auto;
+   border-radius: 100vw;
+}
+
+/******************************    HOMEWORK MAIN    **********************************/
+/* add this */
+main {
+  min-height: 0;      /* KEY: allow children to overflow/scroll */
+  overflow: hidden;   /* panes manage scroll; main does not */
+}
+
+
+main > .container {
+  display: flex;
+  gap: 1.2rem;
+  padding: 1rem;
+  overflow: hidden;    /* keep this: panes get the scrollbars */
+  min-height: 0;
+  min-width: 0;
+  flex: 1 1 auto;
+  height: 100%;        /* ensure it actually fills the main row */
+  max-width: 1400px;
+}
+
+
+.container-question img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+/**************  HOMEWORK QUESTION ***************/
+
+.section-question {
+  flex: 0 0 410px;
+  max-width: 410px;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;     /* independent vertical scroll */
+  overflow-x: hidden;
+}
+
+
+.container-question {
+   display: flex;
+   flex-direction: column;
+   flex: 0 1;
+
+}
+
+
+/* Image rules */
+.container-question img {
+  display: block;
+  width: 100%;             /* never wider than 400px and never wider than column */
+  height: auto;            /* preserve aspect ratio */
+  max-width: 100%;         /* safety: no horizontal overflow */
+  margin: 0 auto;          /* center when column is wider than the image */
+}
+
+/**************      RESPONSE    ***************/
+
+.section-response {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;     /* independent vertical scroll */
+  overflow-x: hidden;
+}
+
+.section-response > * {
+   padding: .4rem;
+   text-align: center;
+   background-color: var(--gray-300);
+}
+
+.response {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   overflow-y: auto;
+}
+
+.response-content {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 400px;
+}
+
+
+
+
+
+/******************************    FOOTER    **********************************/
+
+footer > .container {
+   display: grid;
+   grid-template-columns: auto 1fr auto;
+   grid-template-rows: 1fr;
+   position: relative;
+   background-color: var(--gray-100);
+}
+
+.container-skip,
+.container-feedback,
+.container-check {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.skip, .check {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: var(--gray-300);
+   padding: .4rem 2rem;
+   border-radius: var(--btn-border-radius);
+   min-width: var(--btn-width);
+   min-height: var(--btn-height);
+   text-align: center;
+}
+
+.feedback {
+   font-size: 1.2rem;
+}
+
+
+
+/***************************************************************************/
+/***********       CLASSES CASCADED LAST          *************************/
+/***************************************************************************/
+.nodisplay {
+   display: none !important;
+}
+
+/***************************************************************************/
+/***********         RESPONSIVE MEDIA QUERIES     *************************/
+/***************************************************************************/
+
+@media only screen and (max-width: 992px) { 
+}
+
+@media (max-width: 767px) {
+  /* remove your previous main {...} block */
+
+  main > .container {
+    flex-direction: column;  /* stack panes */
+    overflow: hidden;        /* panes still scroll individually */
+  }
+
+  .section-question,
+  .section-response {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow-y: auto;        /* keep independent scroll on mobile */
+  }
+}
+
+@media only screen and (max-width: 575px) {
+}
+
+@media only screen and (max-width: 375px) {
+}
