@@ -18,15 +18,12 @@
 
    --container-padding-x: 2rem;
 
-   --btn-border-radius: 6px;
-   --btn-width: 7rem;
-   --btn-height: 2.25rem;
 }
 
+* {
+   outline: 1px solid limegreen;
+}
 
-/***************************************************************************/
-/***********             CUSTOM CLASSES                 ********************/
-/***************************************************************************/
 
 /*********     NORMALIZE    **************/
 
@@ -41,12 +38,29 @@ h1, h2, h3, h4, h5, h6, p {
    color: var(--gray-700);
 }
 
+
+.btn {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 6px 8px;
+   background-color: var(--gray-300);
+   border-radius: 6px;
+   width: 7.25rem;
+   height: 2.25rem;
+}
+
+
+/***************************************************************************/
+/***********             CUSTOM CLASSES                 ********************/
+/***************************************************************************/
+
 /******************************   HTML, BODY & WRAPPER    **********************************/
 
 html, body {
   margin: 0;
   height: 100%;
-  overflow: hidden; /* stop outer scrolling */
+  overflow: hidden;
   background-color: #fefefe;
 }
 
@@ -75,43 +89,32 @@ header, footer {
 
 /* Inner content limiter */
 .container {
-  max-width: 1600px;             /* constrain content */
-  margin: 0 auto;                /* center horizontally */
-  width: 100%;                   /* take full width up to 1600px */
+  max-width: 1600px;             
+  margin: 0 auto;                
+  width: 100%;                   
   height: 100%;
-  padding: 0 2rem;               /* add breathing room on small screens */
+  padding: 0 var(--container-padding-x);               
 }
 
 /********************************   HEADER    **********************************/
 
-header > .container {
+header {
+   height: var(--header-height);
+}
+
+header .container {
    display: grid;
    grid-template-columns: auto 1fr auto;
-   grid-template-rows: 1fr;
-   background-color: var(--gray-100);
 }
 
 .container-back-to-lesson,
 .container-title,
 .container-user {
    display: flex;
-}
-
-.container-back-to-lesson,
-.container-user {
-   align-items: center;
-}
-
-.back-to-lesson {
-   display: flex;
    align-items: center;
    justify-content: center;
-   padding: 6px 8px;
-   background-color: var(--gray-300);
-   border-radius: var(--btn-border-radius);   
-   min-width: var(--btn-width);
-   min-height: var(--btn-height);
 }
+
 
 .container-title {
    flex-direction: column;
@@ -125,6 +128,7 @@ header > .container {
    display: flex;
    justify-content: center;
 }
+
 .progress-bar {
    background-color: rgb(64, 172, 64);
    height: 12px;
@@ -137,71 +141,59 @@ header > .container {
 .avatar {
    width: 60px;
    height: auto;
+   aspect-ratio: 1;
+   object-fit: cover;
    border-radius: 100vw;
 }
 
 /******************************    HOMEWORK MAIN    **********************************/
-/* add this */
+
 main {
-  min-height: 0;      /* KEY: allow children to overflow/scroll */
-  overflow: hidden;   /* panes manage scroll; main does not */
+   min-height: 0;      /* allow children to overflow/scroll */
+   overflow: hidden;   /* panes manage scroll; main does not */
 }
 
 
-main > .container {
-  display: flex;
-  gap: 1.2rem;
-  padding: 1rem;
-  overflow: hidden;    /* keep this: panes get the scrollbars */
-  min-height: 0;
-  min-width: 0;
-  flex: 1 1 auto;
-  height: 100%;        /* ensure it actually fills the main row */
-  max-width: 1400px;
+main .container {
+   padding-top: 1rem;
+   padding-bottom: 1rem;
+   display: grid;
+   grid-template-columns: 1fr 2fr;
+   gap: 1rem;
+   min-height: 0;  /* force children to scroll */
 }
 
-
-.container-question img {
-  display: block;
-  max-width: 100%;
-  height: auto;
+/** left and right sections **/
+.section-question,
+.section-response {
+   min-height: 0;
+   min-width: 0;
+   overflow: auto;   /* independent scroll */
 }
 
 
 
 /**************  HOMEWORK QUESTION ***************/
 
-.section-question {
-  flex: 0 0 410px;
-  max-width: 410px;
-  min-width: 0;
-  min-height: 0;
-  overflow-y: auto;     /* independent vertical scroll */
-  overflow-x: hidden;
-}
-
-
 .container-question {
    display: flex;
    flex-direction: column;
    flex: 0 1;
-
 }
 
 
 /* Image rules */
 .container-question img {
   display: block;
-  width: 100%;             /* never wider than 400px and never wider than column */
-  height: auto;            /* preserve aspect ratio */
-  max-width: 100%;         /* safety: no horizontal overflow */
-  margin: 0 auto;          /* center when column is wider than the image */
+  width: min(400px, 100%);     /* default 100%, but never wider than 400px */       
+  height: auto;           
+  max-width: 100%;         
+  margin: 0 auto;          
 }
 
 /**************      RESPONSE    ***************/
 
 .section-response {
-  flex: 1 1 0;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
@@ -212,7 +204,7 @@ main > .container {
 }
 
 .section-response > * {
-   padding: .4rem;
+   padding: .5rem;
    text-align: center;
    background-color: var(--gray-300);
 }
@@ -224,11 +216,13 @@ main > .container {
    overflow-y: auto;
 }
 
+/* simulate response content */
 .response-content {
    display: flex;
    align-items: center;
    justify-content: center;
    height: 400px;
+   width: 100%;
 }
 
 
@@ -236,13 +230,13 @@ main > .container {
 
 
 /******************************    FOOTER    **********************************/
-
-footer > .container {
+footer {
+   height: var(--footer-height);
+}
+footer .container {
    display: grid;
    grid-template-columns: auto 1fr auto;
-   grid-template-rows: 1fr;
    position: relative;
-   background-color: var(--gray-100);
 }
 
 .container-skip,
@@ -253,17 +247,6 @@ footer > .container {
    justify-content: center;
 }
 
-.skip, .check {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   background-color: var(--gray-300);
-   padding: .4rem 2rem;
-   border-radius: var(--btn-border-radius);
-   min-width: var(--btn-width);
-   min-height: var(--btn-height);
-   text-align: center;
-}
 
 .feedback {
    font-size: 1.2rem;
@@ -286,19 +269,19 @@ footer > .container {
 }
 
 @media (max-width: 767px) {
-  /* remove your previous main {...} block */
+  
 
-  main > .container {
-    flex-direction: column;  /* stack panes */
-    overflow: hidden;        /* panes still scroll individually */
+  /* main > .container {
+    flex-direction: column;  
+    overflow: hidden;        
   }
 
   .section-question,
   .section-response {
     flex: 1 1 0;
     min-height: 0;
-    overflow-y: auto;        /* keep independent scroll on mobile */
-  }
+    overflow-y: auto;        
+  } */
 }
 
 @media only screen and (max-width: 575px) {
