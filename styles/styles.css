@@ -185,9 +185,9 @@ main .container {
 /* Image rules */
 .container-question img {
   display: block;
-  width: min(400px, 100%);     /* default 100%, but never wider than 400px */       
-  height: auto;           
-  max-width: 100%;         
+  height: auto;
+  width: 100%;           
+  max-width: 400px;         
   margin: 0 auto;          
 }
 
