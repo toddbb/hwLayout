@@ -1,4 +1,11 @@
-const imageSizes = ["600x600", "500x600", "600x1000"];
+const images = [
+   "600x600",
+   "500x600",
+   "600x1000",
+   "https://lms.ila.edu.vn/content/lessons/SJ_PR_040/test/ReGRA_unscramble.png",
+   "https://lms.ila.edu.vn/content/lessons/SJ_PR_007/test/LIS%20color%20pic%202.png",
+];
+
 const reponseHeight = ["400px", "600px", "1000px"];
 
 let index = {
@@ -30,8 +37,14 @@ const Events = {
    },
 
    handleImageClick() {
-      index.imageSize = (index.imageSize + 1) % imageSizes.length;
-      Dom.image.src = `https://placehold.co/${imageSizes[index.imageSize]}`;
+      index.imageSize = (index.imageSize + 1) % images.length;
+      const image = images[index.imageSize];
+
+      if (image.includes("lms.ila.edu.vn")) {
+         Dom.image.src = image;
+      } else {
+         Dom.image.src = `https://placehold.co/${image}`;
+      }
    },
 
    handleResponseClick() {
