@@ -6,12 +6,30 @@ const images = [
    "https://lms.ila.edu.vn/content/lessons/SJ_PR_007/test/LIS%20color%20pic%202.png",
 ];
 
-const reponseHeight = ["400px", "600px", "1000px"];
-
 let index = {
    imageSize: 0,
-   reponseHeight: 0,
+   responseContent: 0,
 };
+
+const responseItem4 = `
+   <div class="response-item">Response Item 1</div>
+   <div class="response-item">Response Item 2</div>
+   <div class="response-item">Response Item 3</div>
+   <div class="response-item">Response Item 4</div>
+`;
+
+const responseItem8 = `
+   <div class="response-item">Response Item 1</div>
+   <div class="response-item">Response Item 2</div>
+   <div class="response-item">Response Item 3</div>
+   <div class="response-item">Response Item 4</div>
+   <div class="response-item">Response Item 5</div>
+   <div class="response-item">Response Item 6</div>
+   <div class="response-item">Response Item 7</div>
+   <div class="response-item">Response Item 8</div>
+`;
+
+const responseContent = [responseItem4, responseItem8];
 
 /**
  * Function: DOM elements
@@ -20,6 +38,8 @@ let index = {
  */
 
 const Dom = {
+   body: document.querySelector("body"),
+   btnDebug: document.querySelector(".btnDebug"),
    image: document.querySelector("#image"),
    response: document.querySelector(".response-content"),
 };
@@ -34,6 +54,7 @@ const Events = {
    init() {
       Dom.image.addEventListener("click", this.handleImageClick);
       Dom.response.addEventListener("click", this.handleResponseClick);
+      Dom.btnDebug.addEventListener("click", this.handleDebugClick);
    },
 
    handleImageClick() {
@@ -48,9 +69,12 @@ const Events = {
    },
 
    handleResponseClick() {
-      index.reponseHeight = (index.reponseHeight + 1) % reponseHeight.length;
-      Dom.response.style.height = reponseHeight[index.reponseHeight];
-      Dom.response.textContent = `Height: ${reponseHeight[index.reponseHeight]}`;
+      index.responseContent = (index.responseContent + 1) % responseContent.length;
+      Dom.response.innerHTML = responseContent[index.responseContent];
+   },
+
+   handleDebugClick() {
+      Dom.body.classList.toggle("debug");
    },
 };
 

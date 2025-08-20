@@ -8,6 +8,8 @@
       <link rel="stylesheet" href="./styles/styles.css" />
    </head>
    <body>
+      <!-- Debug button -->
+      <div class="btnDebug">🪲</div>
       <div class="wrapper">
          <!-- ***********  HEADER  ************ -->
          <header>
@@ -32,9 +34,7 @@
             <div class="container">
                <!-- ** QUESTION **  -->
                <section class="section-question">
-                  <div class="container-question">
-                     <!-- <img src="https://lms.ila.edu.vn/content/lessons/SJ_PR_007/test/LIS%20color%20pic%202.png" alt="" srcset="" /> -->
-                     <!-- <img src="https://lms.ila.edu.vn/content/lessons/SJ_PR_040/test/ReGRA_unscramble.png" alt="" /> -->
+                  <div class="container-question scrollable">
                      <img id="image" src="https://placehold.co/600x600" alt="" />
                   </div>
                </section>
@@ -42,8 +42,13 @@
                <section class="section-response">
                   <div class="audio">Audio</div>
                   <div class="subtitle">Subtitle</div>
-                  <div class="response">
-                     <div class="response-content">Height: 400px</div>
+                  <div class="response scrollable">
+                     <div class="response-content">
+                        <div class="response-item">Response Item 1</div>
+                        <div class="response-item">Response Item 2</div>
+                        <div class="response-item">Response Item 3</div>
+                        <div class="response-item">Response Item 4</div>
+                     </div>
                   </div>
                </section>
             </div>
@@ -63,6 +68,6 @@
             </div>
          </footer>
       </div>
-      <script src="./scripts/script.js" type="module"></script>
+      <script src="./scripts/script.js"></script>
    </body>
 </html>
